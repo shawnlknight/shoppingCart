@@ -49,7 +49,14 @@ app.controller('productCtrl', function($scope) {
 			'name': 'Barbell',
 			'price': 150.00,
 			'description': 'American made steel olympic barbell. 45 lbs.',
-			'review': 'Best bar out there!'
+			'reviews': [
+				{
+					stars: 5,
+					body: "Best bar on the market!",
+					author: "johnSmith@something.com"
+				}
+
+			]
 		},
 		{
 			'thumbnail': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/small_image/193x193/4c971525e32ff444db0f0150e765d17f/h/g/hg-bumpers-th-new.jpg',
