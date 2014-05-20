@@ -63,15 +63,16 @@
             <br>
             <label>by:</label>
             <input ng-model="review.author" type="email" />
-            <input ng-click="addItem({{product.id}})" type="submit" value="Submit" />     
+            <input ng-click="addReview($index, review)" type="button" value="Submit" />  
           </form>
         </div>
       </section>
-      <p>Quantity</p>
-      <input type="text" ng-model="quantity" ng-model-instant>
-      <button ng-click="addItem({{product}})">Add to Cart</button>
+      <div>
+        <p>Quantity</p>
+        <input type="text" ng-model="product.quantity">
+        <button ng-click="addItem(product)">Add to Cart</button>
+      </div>
   </div>
-</div>
 
 
 
@@ -99,13 +100,13 @@
     <button ng-click="addData(someNum)">Add</button>
   </div> -->
 
-</div>
 
 <div class="row">
   <h3><span class="glyphicon glyphicon-shopping-cart checkout"></span> Checkout</h3>
-  <div ng-repeat="product in purchased">{{product.name}}</div>
+  <div ng-repeat="product in purchased">{{product.name}} -  {{product.quantity}}</div>
   
 </div>
+</div></div>
 
 
 </div>

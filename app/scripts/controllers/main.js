@@ -42,6 +42,7 @@ var app = angular.module('shoppingCart')
   });
 
 app.controller('productCtrl', function($scope) {
+	$scope.reviews = {};
 	$scope.products = [
 		{
 			'thumbnail': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/small_image/193x193/4c971525e32ff444db0f0150e765d17f/m/-/m-bruiser-th-new.jpg',
@@ -49,14 +50,7 @@ app.controller('productCtrl', function($scope) {
 			'name': 'Barbell',
 			'price': 150.00,
 			'description': 'American made steel olympic barbell. 45 lbs.',
-			'reviews': [
-				{
-					'stars': 5,
-					'body': "Best bar on the market!",
-					'author': "johnSmith@something.com"
-				}
-
-			],
+			'reviews': [],
 			_id: 0
 		},
 		{
@@ -65,6 +59,7 @@ app.controller('productCtrl', function($scope) {
 			'name': 'Bumber Plate Package',
 			'price': 500.00,
 			'description': '400 total pounds of American Made bumper weight plates.',
+			'reviews': [],
 			_id: 1
 		},
 		{
@@ -73,6 +68,7 @@ app.controller('productCtrl', function($scope) {
 			'name': 'Kettlebell',
 			'price': 50.00,
 			'description': 'American made 50 lb kettlebell.',
+			'reviews': [],
 			_id: 2
 		},
 		{
@@ -81,6 +77,7 @@ app.controller('productCtrl', function($scope) {
 			'name': 'Speed Rope',
 			'price': 20.00,
 			'description': 'Speed jump rope. Perfect for double-unders!',
+			'reviews': [],
 			_id: 3
 		}
 		
@@ -89,6 +86,12 @@ app.controller('productCtrl', function($scope) {
 		$scope.purchased.push(product);
 	}
 	$scope.purchased = [];
+
+	$scope.addReview = function(i,r) {
+		$scope.review = {};
+		$scope.products[i].reviews.push(r);
+		
+	}
 });
 
 app.controller("PanelController", function() {
