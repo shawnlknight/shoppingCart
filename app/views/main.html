@@ -1,0 +1,82 @@
+<div ng-conroller="MainCtrl">
+<div class="header">
+<!--   <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Products</a></li>
+  </ul> -->
+  <h1 class="text-muted">Crossfit Depot</h1>
+</div>
+
+<div class="col-md-12">
+
+<div ng-controller="productCtrl" class="">
+  <div ng-repeat="product in products" class="crossfitGear">
+  <ul>
+    <li>
+      <h3> 
+        {{product.name}} 
+        <em class="pull-right"> {{product.price | currency}} </em>
+      </h3>
+    </li>
+    <li> <img ng-src="{{product.thumbnail}}"></img> </li>
+  </ul>
+    <section ng-controller="PanelController as panel">
+      <ul class="nav nav-pills">
+        <li ng-class="{ active:tab === 1 }"> 
+          <a href ng-click="panel.selectTab(1)">Description</a> 
+        </li>
+        <li ng-class="{ active:tab === 2 }"> 
+          <a href ng-click="panel.selectTab(2)">Reviews</a> 
+        </li>
+      </ul>
+      <div class="panel" ng-show="tab === 1">
+        <h4>Description </h4>
+        <p>{{product.description}}</p>
+      </div>
+    </section>
+
+      <input type="text" ng-model="quantity" ng-model-instant>
+      <button ng-click="addQuantity(quantity)">Add to Cart</button>
+  </div>
+</div>
+
+
+
+
+
+  <input type="text" ng-model="item">
+  <button ng-click="addAwesome(item)">Add</button>
+  <ul>
+    <li ng-repeat="addSomething in awesomeThings">
+      {{addSomething}}
+    </li>
+  </ul>
+  <ul>
+    <li ng-repeat="moreData in anotherDataArr">
+      {{moreData}}
+    </li>
+  </ul>
+
+
+  <div ng-controller="demoController">
+    <ul>
+      <li ng-repeat="numData in demoData">{{numData}}</li>
+    </ul>
+    <input type="text" ng-model="someNum" ng-model-instant>
+    <button ng-click="addData(someNum)">Add</button>
+  </div>
+
+  <p><a class="btn btn-lg btn-default" ng-href="#"><span class="glyphicon glyphicon-plus"></span></a></p>
+</div>
+
+</div>
+
+<div class="row">
+  <h3><span class="glyphicon glyphicon-shopping-cart checkout"></span> Checkout</h3>
+</div>
+
+
+
+
+<div class="footer">
+</div>
+
