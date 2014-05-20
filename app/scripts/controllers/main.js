@@ -85,9 +85,10 @@ app.controller('productCtrl', function($scope) {
 		}
 		
 	]; 
-	$scope.addData = function(item) {
-		$scope.product.reviews.push(item);
-	};
+	$scope.addItem = function(product) {
+		$scope.purchased.push(product);
+	}
+	$scope.purchased = [];
 });
 
 app.controller("PanelController", function() {
