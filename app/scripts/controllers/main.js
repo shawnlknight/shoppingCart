@@ -17,7 +17,6 @@ var app = angular.module('shoppingCart')
   });
 
 app.controller('productCtrl', function($scope) {
-	$scope.reviews = {};
 	$scope.products = 
 	[
 		{
@@ -86,11 +85,6 @@ app.controller('productCtrl', function($scope) {
 	// 	return total;
 	// }
 
-	// $scope.addReview = function(i,r) {
-	// 	$scope.review = {};
-	// 	$scope.products[i].reviews.push(r);
-		
-	// }
 });
 
 app.controller("PanelController", function() {
@@ -111,6 +105,10 @@ app.controller("ReviewController", function() {
 		product.reviews.push(this.review);
 		this.review = {};
 	};
+});
+
+app.controller("cartController", function() {
+
 });
 
 

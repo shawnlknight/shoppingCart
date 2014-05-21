@@ -81,7 +81,7 @@
   </div>
 
 <h3><span class="glyphicon glyphicon-shopping-cart shopCart"></span> Checkout</h3>
-<div class="row checkOut">
+<div class="checkOut">
   <div ng-repeat="product in purchased" class="purchaseItem">
     <button ng-click="removeItem($index)" class="removeBtn pull-right">Remove</button>
     <h4>{{product.name}}: {{product.quantity}}</h4>
