@@ -18,7 +18,8 @@ var app = angular.module('shoppingCart')
 
 app.controller('productCtrl', function($scope) {
 	$scope.reviews = {};
-	$scope.products = [
+	$scope.products = 
+	[
 		{
 			'thumbnail': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/small_image/193x193/4c971525e32ff444db0f0150e765d17f/m/-/m-bruiser-th-new.jpg',
 			'pic': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/header_image/0dc2d03fe217f8c83829496872af24a0/r/o/rogue-bruiser-bar-web-h1.jpg',
@@ -64,17 +65,26 @@ app.controller('productCtrl', function($scope) {
 			'reviews': [],
 			_id: 4
 		}
-		
 	]; 
+
 	$scope.addItem = function(product) {
 		$scope.purchased.push(product);
 	}
 	$scope.purchased = [];
 
-	$scope.removeItem = function(product) {
-		$scope.purchased.pop(product);
+	$scope.removeItem = function(index) {
+		$scope.purchased.splice(index, 1);
 	}
 	$scope.purchased = [];
+
+	// $scope.total = function() {
+	// 	var total = 0;
+	// 	angular.forEach($scope.products.items, function(item) {
+	// 		total += item.qty * item.price;
+	// 	})
+
+	// 	return total;
+	// }
 
 	// $scope.addReview = function(i,r) {
 	// 	$scope.review = {};

@@ -77,16 +77,16 @@
         <p>Quantity</p>
         <input type="number" ng-model="product.quantity">
         <button ng-click="addItem(product)" class="addBtn">Add to Cart</button>
-        <button ng-click="removeItem(product)" class="removeBtn">Remove from Cart</button>
       </div>
   </div>
 
 <h3><span class="glyphicon glyphicon-shopping-cart shopCart"></span> Checkout</h3>
 <div class="row checkOut">
-  <div ng-repeat="product in purchased">
+  <div ng-repeat="product in purchased" class="purchaseItem">
+    <button ng-click="removeItem($index)" class="removeBtn pull-right">Remove</button>
     <h4>{{product.name}}: {{product.quantity}}</h4>
     <p>{{product.price | currency}}<p>
-    <h3>Total: </h3>
+    
   </div>
   
 </div>
