@@ -1,5 +1,9 @@
 <div ng-conroller="MainCtrl">
 <div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Products</a></li>
+    <li><a ng-href="#/newPage">About</a></li>
+  </ul>
   <h1 class="text-muted">Crossfit Depot</h1>
 </div>
 
@@ -19,18 +23,20 @@
       <section ng-controller="PanelController as panel">
         <ul class="nav nav-pills">
           <li ng-class="{active: panel.isSelected(0)}"> 
-            <a href ng-click="panel.selectTab(0)">Clear</a> 
+            <a href ng-click="panel.selectTab(0)">Description</a> 
           </li>
           <li ng-class="{active: panel.isSelected(1)}"> 
-            <a href ng-click="panel.selectTab(1)">Description</a> 
+            <a href ng-click="panel.selectTab(1)">More Photos</a> 
           </li>
           <li ng-class="{active: panel.isSelected(2)}"> 
             <a href ng-click="panel.selectTab(2)">Reviews</a> 
           </li>
         </ul>
-        <div class="panel" ng-show="panel.isSelected(1)">
+        <div class="panel" ng-show="panel.isSelected(0)">
           <h4>Description </h4>
           <p>{{product.description}}</p>
+        </div>
+        <div class="panel" ng-show="panel.isSelected(1)">
           <img ng-src="{{product.pic}}"></img>
         </div>
         <div class="panel" ng-show="panel.isSelected(2)">
@@ -43,15 +49,15 @@
             <br>
             <cite>by: {{review.author}}</cite>
           </blockquote>
-          <form name="reviewForm">
+          <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
             <blockquote>
-              <b>Stars: {{review.stars}}</b>
+              <b>Stars: {{reviewCtrl.review.stars}}</b>
               <br>
-              {{review.body}}
+              {{reviewCtrl.review.body}}
               <br>
-              <cite>by: {{review.author}}</cite>
+              <cite>by: {{reviewCtrl.review.author}}</cite>
             </blockquote>
-            <select ng-model="review.stars">
+            <select ng-model="reviewCtrl.review.stars">
               <option value="1">1 star</option>
               <option value="2">2 star</option>
               <option value="3">3 star</option>
@@ -59,54 +65,32 @@
               <option value="5">5 star</option>
             </select>
             <br>
-            <textarea ng-model="review.body" cols="50" rows="5"></textarea>
+            <textarea ng-model="reviewCtrl.review.body" cols="50" rows="3"></textarea>
             <br>
             <label>by:</label>
-            <input ng-model="review.author" type="email" />
-            <input ng-click="addReview($index, review)" type="button" value="Submit" />  
+            <input ng-model="reviewCtrl.review.author" type="email" />
+            <input type="submit" value="Submit" />  
           </form>
         </div>
       </section>
       <div>
         <p>Quantity</p>
-        <input type="text" ng-model="product.quantity">
+        <input type="number" ng-model="product.quantity">
         <button ng-click="addItem(product)">Add to Cart</button>
       </div>
   </div>
 
-
-
-
-
-<!--   <input type="text" ng-model="item">
-  <button ng-click="addAwesome(item)">Add</button>
-  <ul>
-    <li ng-repeat="addSomething in awesomeThings">
-      {{addSomething}}
-    </li>
-  </ul>
-  <ul>
-    <li ng-repeat="moreData in anotherDataArr">
-      {{moreData}}
-    </li>
-  </ul> -->
-
-
-<!--   <div ng-controller="demoController">
-    <ul>
-      <li ng-repeat="numData in demoData">{{numData}}</li>
-    </ul>
-    <input type="text" ng-model="someNum" ng-model-instant>
-    <button ng-click="addData(someNum)">Add</button>
-  </div> -->
-
-
-<div class="row">
-  <h3><span class="glyphicon glyphicon-shopping-cart checkout"></span> Checkout</h3>
-  <div ng-repeat="product in purchased">{{product.name}} -  {{product.quantity}}</div>
+<h3><span class="glyphicon glyphicon-shopping-cart shopCart"></span> Checkout</h3>
+<div class="row checkOut">
+  <div ng-repeat="product in purchased">
+    <h4>{{product.name}}: {{product.quantity}}</h4>
+    <h3>Total: {{product.price | currency}}</h3>
+  </div>
   
 </div>
-</div></div>
+</div>
+
+</div>
 
 
 </div>

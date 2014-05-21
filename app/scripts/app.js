@@ -13,6 +13,14 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/newPage', {
+        templateUrl: 'views/cart.html',
+        controller: 'MainCtrl'
+      })
+      .when('/mainPage', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
