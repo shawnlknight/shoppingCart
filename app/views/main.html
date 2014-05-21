@@ -20,6 +20,7 @@
     </li>
     <li> <img ng-src="{{product.thumbnail}}"></img> </li>
   </ul>
+
       <section ng-controller="PanelController as panel">
         <ul class="nav nav-pills">
           <li ng-class="{active: panel.isSelected(0)}"> 
@@ -41,7 +42,6 @@
         </div>
         <div class="panel" ng-show="panel.isSelected(2)">
           <h4>Reviews </h4>
-
           <blockquote ng-repeat="review in product.reviews">
             <b>Stars: {{review.stars}}</b>
             <br>
@@ -76,7 +76,8 @@
       <div>
         <p>Quantity</p>
         <input type="number" ng-model="product.quantity">
-        <button ng-click="addItem(product)">Add to Cart</button>
+        <button ng-click="addItem(product)" class="addBtn">Add to Cart</button>
+        <button ng-click="removeItem(product)" class="removeBtn">Remove from Cart</button>
       </div>
   </div>
 
@@ -84,7 +85,8 @@
 <div class="row checkOut">
   <div ng-repeat="product in purchased">
     <h4>{{product.name}}: {{product.quantity}}</h4>
-    <h3>Total: {{product.price | currency}}</h3>
+    <p>{{product.price | currency}}<p>
+    <h3>Total: </h3>
   </div>
   
 </div>

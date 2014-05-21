@@ -22,7 +22,7 @@ app.controller('productCtrl', function($scope) {
 		{
 			'thumbnail': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/small_image/193x193/4c971525e32ff444db0f0150e765d17f/m/-/m-bruiser-th-new.jpg',
 			'pic': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/header_image/0dc2d03fe217f8c83829496872af24a0/r/o/rogue-bruiser-bar-web-h1.jpg',
-			'name': 'Barbell',
+			'name': 'Olympic Barbell',
 			'price': 150.00,
 			'description': 'American made steel olympic barbell. 45 lbs. Tough enough for any workout.',
 			'reviews': [],
@@ -54,11 +54,25 @@ app.controller('productCtrl', function($scope) {
 			'description': 'Speed jump rope. Coated steel cable. Perfect for double-unders!',
 			'reviews': [],
 			_id: 3
+		},
+		{
+			'thumbnail': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/small_image/193x193/4c971525e32ff444db0f0150e765d17f/k/i/kids-wood-rings-th.jpg',
+			'pic': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/qv_header/0dc2d03fe217f8c83829496872af24a0/w/o/wood-rings-web-h1.jpg',
+			'name': 'Wood Gymnastic Rings',
+			'price': 60.00,
+			'description': 'Wood Gymnastic Rings offer a grip, texture, and feel that is distinct from plastic or steel.',
+			'reviews': [],
+			_id: 4
 		}
 		
 	]; 
 	$scope.addItem = function(product) {
 		$scope.purchased.push(product);
+	}
+	$scope.purchased = [];
+
+	$scope.removeItem = function(product) {
+		$scope.purchased.pop(product);
 	}
 	$scope.purchased = [];
 
