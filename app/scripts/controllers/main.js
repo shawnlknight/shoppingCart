@@ -2,18 +2,7 @@
 
 var app = angular.module('shoppingCart')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    $scope.addAwesome = function(item) {
-    	$scope.awesomeThings.push(item);
-    };
-    $scope.anotherDataArr = [
-    	'this is something',
-    	'more stuff'
-    ];
+
   });
 
 app.controller('productCtrl', function($scope) {
@@ -24,6 +13,7 @@ app.controller('productCtrl', function($scope) {
 			'pic': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/header_image/0dc2d03fe217f8c83829496872af24a0/r/o/rogue-bruiser-bar-web-h1.jpg',
 			'name': 'Olympic Barbell',
 			'price': 150.00,
+			'quantity': [],
 			'description': 'American made steel olympic barbell. 45 lbs. Tough enough for any workout.',
 			'reviews': [],
 			_id: 0
@@ -33,6 +23,7 @@ app.controller('productCtrl', function($scope) {
 			'pic': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/header_sm_image/0dc2d03fe217f8c83829496872af24a0/h/g/hg3ships.jpg',
 			'name': 'Bumber Plate Package',
 			'price': 500.00,
+			'quantity': [],
 			'description': '400 total pounds of American Made bumper weight plates. Designed to withstand repeated drops on any surface.',
 			'reviews': [],
 			_id: 1
@@ -42,6 +33,7 @@ app.controller('productCtrl', function($scope) {
 			'pic': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/header_sm_image/0dc2d03fe217f8c83829496872af24a0/1/2/121-rogue-kettlebell-web-h1.jpg',
 			'name': 'Kettlebell',
 			'price': 50.00,
+			'quantity': [],
 			'description': 'American made kettlebell. Sure to stand the test of time.',
 			'reviews': [],
 			_id: 2
@@ -51,6 +43,7 @@ app.controller('productCtrl', function($scope) {
 			'pic': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/qv_header/0dc2d03fe217f8c83829496872af24a0/s/r/sr-1s-short-handle-bearing-speed-rope-web-h1.jpg',
 			'name': 'Speed Rope',
 			'price': 20.00,
+			'quantity': [],
 			'description': 'Speed jump rope. Coated steel cable. Perfect for double-unders!',
 			'reviews': [],
 			_id: 3
@@ -60,6 +53,7 @@ app.controller('productCtrl', function($scope) {
 			'pic': 'http://cdn.roguefitness.com/media/catalog/product/cache/1/qv_header/0dc2d03fe217f8c83829496872af24a0/w/o/wood-rings-web-h1.jpg',
 			'name': 'Wood Gymnastic Rings',
 			'price': 60.00,
+			'quantity': [],
 			'description': 'Wood Gymnastic Rings offer a grip, texture, and feel that is distinct from plastic or steel.',
 			'reviews': [],
 			_id: 4
@@ -76,15 +70,30 @@ app.controller('productCtrl', function($scope) {
 	}
 	$scope.purchased = [];
 
-	// $scope.total = function() {
-	// 	var total = 0;
-	// 	angular.forEach($scope.products.items, function(item) {
-	// 		total += item.qty * item.price;
-	// 	})
 
-	// 	return total;
+	$scope.total = function(product) {
+		var total = 0;
+		angular.forEach($scope.products, function(product) {
+			total += product.quantity * product.price;
+		})
+
+		$scope.total = total;
+	}
+
+	$scope.currentTotal = 0;
+
+	$scope.$watch('purchased', function(oldvalue, newvalue) {
+
+		$scope.total('total');
+		console.log('watch working');
+
+	})
+
+	// $scope.addReview = function(i,r) {
+	// 	$scope.review = {};
+	// 	$scope.products[i].reviews.push(r);
+		
 	// }
-
 });
 
 app.controller("PanelController", function() {
@@ -107,9 +116,13 @@ app.controller("ReviewController", function() {
 	};
 });
 
-app.controller("cartController", function() {
+// app.controller("cartController", function() {
+// 	this.total = {};
 
-});
+// 	this.addTotal = function(product) {
+// 		product.price.push(this.total)
+// 	}
+// });
 
 
 

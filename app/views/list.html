@@ -1,0 +1,8 @@
+<button ng-click="addProduct()" class="btn btn-success">Add Product</button>
+<article ng-repeat="product in products">
+
+		<h2>{{product.title}}</h2>
+		<p>{{product.description}}</p>
+		<p><a href="#/inventory/{{product._id}}">View More</a></p>
+	<hr>
+</article>

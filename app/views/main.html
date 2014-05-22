@@ -22,7 +22,7 @@
   </ul>
 
       <section ng-controller="PanelController as panel">
-        <ul class="nav nav-pills">
+        <ul class="nav nav-tabs">
           <li ng-class="{active: panel.isSelected(0)}"> 
             <a href ng-click="panel.selectTab(0)">Description</a> 
           </li>
@@ -76,25 +76,24 @@
       <div>
         <p>Quantity</p>
         <input type="number" ng-model="product.quantity">
-        <button ng-click="addItem(product)" class="addBtn">Add to Cart</button>
+        <button ng-click="addItem(product)" class="btn btn-sm btn-success">Add to Cart</button>
       </div>
   </div>
 
 <h3><span class="glyphicon glyphicon-shopping-cart shopCart"></span> Checkout</h3>
 <div class="checkOut">
   <div ng-repeat="product in purchased" class="purchaseItem">
-    <button ng-click="removeItem($index)" class="removeBtn pull-right">Remove</button>
-    <h4>{{product.name}}: {{product.quantity}}</h4>
-    <p>{{product.price | currency}}<p>
-    
+    <button ng-click="removeItem($index)" class="btn btn-sm btn-danger pull-right">Remove</button>
+    <h4>{{product.name}}: {{product.quantity}} ea</h4>
+    <p>{{product.price * product.quantity | currency}}<p>
   </div>
-  
-</div>
-</div>
-
+  <h3>Total: {{total}}</h3>
+  </div>
 </div>
 
+</div>
 
+<p><a class="btn btn-md btn-success" ng-href="#/invetory">Go to Inventory</a></p>
 </div>
 
 
